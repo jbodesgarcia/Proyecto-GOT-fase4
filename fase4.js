@@ -18,7 +18,7 @@ casaStark.agregarMiembro(edd);
 // --------------------------------------------------
 // 3. Crear a Khaleesi y sus dragones
 // --------------------------------------------------
-const Tyrion = new Consejero();
+const tyrion = new Consejero("Tyrion Lannister", 30, casaLannister, "Especialidad");
 const drogon = new Dragon("Drogon", 60, "fuego");
 const viserion = new Dragon("Viserion", 55, "fuego");
 const rhaegal = new Dragon("Rhaegal", 50, "fuego");
@@ -39,3 +39,6 @@ const ejercitoCaminantes = [caminante1, caminante2, caminante3, caminante4];
 // --------------------------------------------------
 const batallaFinal = new Batalla();
 batallaFinal.batallaFinal(casaStark, khaleesi, ejercitoCaminantes);
+
+
+//SI UN CAMINANTE MATA A ALGUIEN ESTE SE CONVIERTE EN CAMINANTE TAMBIEN

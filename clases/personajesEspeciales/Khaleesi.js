@@ -1,14 +1,14 @@
 import Personaje from "../Personaje.js";
-
+import Consejero from "./Consejero.js";
 class Khaleesi extends Personaje{
     #dragones;
     #consejero;
    
-    constructor(dragones, consejero){
-        
-
+    constructor(nombre, edad, casa, vivo = true, dragones, consejero){
+        super(nombre, edad, casa, vivo)
+        this.#dragones = [];
+        this.#consejero = new Consejero("Tyrion Lannister", 30, casaLannister, "Especialidad");
     }
-   
     get #dragones() {
         return this.#dragones;
     }
@@ -27,3 +27,4 @@ class Khaleesi extends Personaje{
     
 }
 
+export default Khaleesi;
