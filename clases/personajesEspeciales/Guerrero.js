@@ -1,6 +1,5 @@
-
 import Personaje from "../Personaje.js";
-
+import CaminanteBlanco from "./CaminanteBlanco.js";
 class Guerrero extends Personaje {
     #arma;
     #vida;
@@ -56,9 +55,20 @@ class Guerrero extends Personaje {
     }
 
     atacar(objetivo){
-        const daño = Math.floor(this.#arma.daño * (0.7 + Math.random() * 0.6)); //entre 70% y 130% del daño
-        console.log(this.nombre + "ataca a " + objetivo.nombre + " causando " + daño + "puntos de vida");
-        objetivo.recibirDaño(daño);
+        if(objetivo instanceof CaminanteBlanco){
+            if(this.#arma.tipo == "acero valyrio"){
+                const daño = Math.floor(this.#arma.daño * (0.7 + Math.random() * 0.6)); //entre 70% y 130% del daño
+                console.log(this.nombre + "ataca a " + objetivo.nombre + " causando " + daño + " puntos de vida");
+                objetivo.recibirDaño(daño, this.#arma.nombre);
+            }else{
+                console.log("el enemigo no es afectado por este tipo de arma");
+            }
+        }else{
+            const daño = Math.floor(this.#arma.daño * (0.7 + Math.random() * 0.6)); //entre 70% y 130% del daño
+            console.log(this.nombre + "ataca a " + objetivo.nombre + " causando " + daño + "puntos de vida");
+            objetivo.recibirDaño(daño);
+        }
+        
     }
 }
 

@@ -4,22 +4,22 @@ class Khaleesi extends Personaje{
     #dragones;
     #consejero;
    
-    constructor(nombre, edad, casa, vivo = true, dragones, consejero){
-        super(nombre, edad, casa, vivo)
-        this.#dragones = [];
-        this.#consejero = new Consejero("Tyrion Lannister", 30, casaLannister, "Especialidad");
+    constructor(nombre, edad, casa, dragones){
+        super(nombre, edad, casa)
+        this.#dragones = dragones;
+        this.#consejero = new Consejero("Tyrion Lannister", 30, casa, "Especialidad");
     }
-    get #dragones() {
+    get dragones() {
         return this.#dragones;
     }
-    set #dragones(in_dragones) {
+    set dragones(in_dragones) {
         this.#dragones = in_dragones;
     }
 
-    get #consejero() {
+    get consejero() {
         return this.#consejero;
     }
-    set #consejero(in_consejero) {
+    set consejero(in_consejero) {
         this.#consejero = in_consejero;
     }
 

@@ -1,7 +1,16 @@
+import Arma from "./clases/Arma.js";
+import Casa from "./clases/Casa.js";
+import Guerrero from "./clases/personajesEspeciales/Guerrero.js";
+import Consejero from "./clases/personajesEspeciales/Consejero.js";
+import Khaleesi from "./clases/personajesEspeciales/Khaleesi.js";
+import Dragon from "./clases/personajesEspeciales/Dragon.js";
+import CaminanteBlanco from "./clases/personajesEspeciales/CaminanteBlanco.js";
+import Batalla from "./clases/Batalla.js";
 // --------------------------------------------------
 // 1. Crear casas y armas
 // --------------------------------------------------
 const casaStark = new Casa("Stark", "El invierno se acerca");
+const casaLannister = new Casa("Lannister", "Oye mi rugido");
 const garra = new Arma("Garra", 50, "acero valyrio");
 const hacha = new Arma("Hacha del Norte", 40, "hierro");
 
@@ -22,7 +31,7 @@ const tyrion = new Consejero("Tyrion Lannister", 30, casaLannister, "Especialida
 const drogon = new Dragon("Drogon", 60, "fuego");
 const viserion = new Dragon("Viserion", 55, "fuego");
 const rhaegal = new Dragon("Rhaegal", 50, "fuego");
-const khaleesi = new Khaleesi("Daenerys Targaryen", 29, "Casa Targaryen",[drogon, viserion, rhaegal],Tyrion);
+const khaleesi = new Khaleesi("Daenerys Targaryen", 29, "Casa Targaryen",[drogon, viserion, rhaegal],tyrion);
 
 // --------------------------------------------------
 // 4. Crear ejército de Caminantes Blancos
@@ -41,4 +50,3 @@ const batallaFinal = new Batalla();
 batallaFinal.batallaFinal(casaStark, khaleesi, ejercitoCaminantes);
 
 
-//SI UN CAMINANTE MATA A ALGUIEN ESTE SE CONVIERTE EN CAMINANTE TAMBIEN

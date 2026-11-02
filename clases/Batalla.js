@@ -1,4 +1,7 @@
+import CaminanteBlanco from "./personajesEspeciales/CaminanteBlanco.js";
 import Guerrero from "./personajesEspeciales/Guerrero.js";
+import Khaleesi from "./personajesEspeciales/Khaleesi.js";
+
 class Batalla {
     #guerreros;
     #muertos;
@@ -124,6 +127,63 @@ class Batalla {
         }
     }
 
+    batallaFinal(casaStark, khaleesi, ejercitoCaminantes){
+        let guerreros = [];
+
+        for(let guerrero of casaStark.arrayPersonaje){
+            if(guerrero instanceof Guerrero){
+                guerreros.push(guerrero);
+            }
+        }
+        for(let dragon of khaleesi.dragones){
+            guerreros.push(dragon);
+        }
+
+        let guerrerosVivos = guerreros.some(guerrero => guerrero.vida > 0);
+        let caminanteVivo = ejercitoCaminantes.some(caminante => caminante.vida > 0);
+
+        if(!guerrerosVivos || !caminanteVivo){
+            console.log("Los dos bandos tienen que tener minimo un combatiente");
+        }else{
+            let contadorGuerreros = 0;
+            let contadorCaminantes = 0;
+            while(guerreros.some(guerrero => guerrero.vida > 0) && ejercitoCaminantes.some(caminante => caminante.vida > 0)){
+                 let guerrero = guerreros.find(guerrero => guerrero.vida > 0);
+                 let caminante = ejercitoCaminantes.find(caminante => caminante.vida > 0);
+
+                 guerrero.atacar(caminante);
+
+                 if(caminante.vida > 0){
+                    caminante.atacar(guerrero);
+                 }
+
+                 if(caminante.vida <= 0){
+                    contadorGuerreros ++;
+
+                 }
+
+                 if(guerrero.vida <= 0){
+                    contadorCaminantes ++;
+                    ejercitoCaminantes.push(new CaminanteBlanco(guerrero.nombre, 40));
+                    let indice = guerreros.indexOf(guerrero);
+                    guerreros.splice(indice, 1);
+
+                 }
+                console.log(guerrero.nombre + " " + guerrero.vida + " || " + caminante.nombre + " " + caminante.vida);
+                console.log("");
+
+            }
+            if(contadorGuerreros > contadorCaminantes){
+                console.log("ganan los guerreros");
+            }else{
+                console.log("ganan los caminantes");
+            }
+        }
+
+     
+    }
+
+    
 }
 
 
